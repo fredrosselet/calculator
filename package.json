@@ -1,0 +1,35 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "Calculator application",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "nodemon server/index.js",
+    "build": "webpack --config webpack.config.js --mode=development --watch",
+    "prod": "webpack --config webpack.config.js --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fredrosselet/calculator.git"
+  },
+  "author": "Frederic Rosselet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fredrosselet/calculator/issues"
+  },
+  "homepage": "https://github.com/fredrosselet/calculator#readme",
+  "dependencies": {
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-react": "^7.14.5",
+    "babel-loader": "^8.2.2",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.13",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "webpack": "^5.56.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.8.0"
+  }
+}
