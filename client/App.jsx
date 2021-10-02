@@ -1,10 +1,13 @@
 import React from 'react';
+import Result from './components/Result.jsx';
+import Inputs from './components/Inputs.jsx';
 
-const App = () => {
-  return (
-    <div>Hello World</div>
-  );
-};
+const App = () => (
+  <div className="calculator">
+    <Result/>
+    <Inputs/>
+  </div>
+);
 
 
 

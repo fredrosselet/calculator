@@ -1,0 +1,62 @@
+body {
+  background-color: black;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 80px;
+  margin: auto;
+}
+
+button {
+  height: 72px;
+  width: 72px;
+  border: none;
+  border-radius: 50%;
+  font-size: 32px;
+}
+
+.calculator {
+  display: block;
+}
+
+.result, .operation, .buttonPad {
+  width: 320px;
+  text-align: right;
+}
+
+.buttonPad {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 8px;
+}
+
+.AC,
+.\28, /* ( */
+.\29 /* ) */
+{
+  color: #000000;
+  background-color: #efefef;
+}
+
+.÷,
+.x,
+.\2D, /* - */
+.\2B, /* + */
+.\3D /* = */
+{
+  color: #ffffff;
+  background-color: orange;
+}
+
+.\31, .\32, .\33, .\34, .\35, .\36, .\37, .\38, .\39, .\30, .\2E /* 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, . */
+{
+  color: #ffffff;
+  background-color: rgb(65, 65, 65);
+}
+
+.\30 { /* 0 */
+  grid-column: span 2;
+  width: 152px;
+  padding: 0 28px;
+  text-align: left;
+  border-radius: 40px;
+}
