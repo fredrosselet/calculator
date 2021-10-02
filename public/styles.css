@@ -3,7 +3,6 @@ body {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 80px;
-  margin: auto;
 }
 
 button {
@@ -12,13 +11,11 @@ button {
   border: none;
   border-radius: 50%;
   font-size: 32px;
+  cursor: pointer;
 }
 
 .calculator {
-  display: block;
-}
-
-.result, .operation, .buttonPad {
+  margin: auto;
   width: 320px;
   text-align: right;
 }
@@ -55,7 +52,7 @@ button {
 
 .\30 { /* 0 */
   grid-column: span 2;
-  width: 152px;
+  width: 154px;
   padding: 0 28px;
   text-align: left;
   border-radius: 40px;

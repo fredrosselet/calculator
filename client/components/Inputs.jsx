@@ -8,8 +8,9 @@ const Inputs = (props)  => {
   return (
     <div>
       <div className="operation">{operation ? operation  : '0'}</div>
+
       <div className="buttonPad">
-        <button className="AC" onClick={() => setOperation('')}>AC</button>
+        <button className="AC" onClick={() => setOperation('')}>{operation ? 'C' : 'AC'}</button>
         {characters.map((character, index) =>
           <button className={character} key={index} onClick={() => setOperation(operation + character)}>{character}</button>
         )}
