@@ -1,30 +1,6 @@
-// const parseNumber = (s) => {
-//   // allow it to be negative
-//   let decimalPointCounted = false;
-//   let numberStr = '';
-
-//   for (let i = 0; i < s.length; i++) {
-//     if (s[i] === '.') {
-//       if (!s[i + 1] || isNaN(s[i + 1])) {
-//         return 'Error: missing number after decimal point'
-//       } else if (decimalPointCounted) {
-//         return 'Error: too many decimal points in one float'
-//       } else {
-//         decimalPointCounted = true;
-//       }
-//     }
-//     if (s[i] !== '.' && isNaN(s[i])) {
-//       return numberStr;
-//     } else {
-//       numberStr += s[i];
-//     }
-//   }
-//   return numberStr;
-// };
-
 const format = (input) => {
   if (!input) {
-    return '';
+    return '0';
   }
 
   input = input.replaceAll(' ', '').replaceAll('x', '*').replaceAll('÷', '/');
@@ -46,7 +22,7 @@ const format = (input) => {
 
     // only accept calcChars
     if (!calcChars.includes(firstChar)) {
-      return 'Error: invalid input'
+      return 'Error: invalid input';
     }
 
     // NUMBERS OR DECIMAL POINT
@@ -65,10 +41,13 @@ const format = (input) => {
         numberStr += string[i];
         i++;
       }
-      operation += numberStr;
+
+      if (numberStr === '.') {
+        return 'Error: decimal point needs a number on either side';
+      }
 
       // recursive call for numbers (incl. floats)
-      return recursiveParse(string.slice(numberStr.length), operation);
+      return recursiveParse(string.slice(numberStr.length), operation + numberStr);
     }
 
 
@@ -97,7 +76,7 @@ const format = (input) => {
       // PARENTHESES
       if (firstChar === '(') {
         if (nextChar === ')') {
-          return 'Error: empty parenthesis'
+          return 'Error: empty parenthesis';
         } else {
           unresolvedParentheses++;
           // add * in front of ( if previous character is a number
@@ -125,17 +104,18 @@ const format = (input) => {
     }
   };
 
-
   const result = recursiveParse(input);
 
-  // check if parentheses there are leftover opening parentheses
+  // unless we already have an error
   if (result[0] === 'E') {
     return result;
+
+  // check if parentheses there are leftover opening parentheses
   } else if (unresolvedParentheses > 0) {
     return 'Error: too many opening parentheses';
+
+  // otherwise return result operation
   } else {
     return result;
   }
 };
-
-console.log(format('12(())'))
