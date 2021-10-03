@@ -1,8 +1,12 @@
 # Bundles
 bundle.js
+bundle.js.map
 
 # Packages
 package-lock.json
+
+# Test coverage
+coverage
 
 # Logs
 logs

@@ -3,18 +3,23 @@ const format = (input) => {
     return '0';
   }
 
+  // initial formatting
   input = input.replaceAll(' ', '').replaceAll('x', '*').replaceAll('÷', '/');
 
   const calcChars = ['(', ')', '.', '+', '-', '*', '/', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
   const operators = ['+', '-', '*', '/'];
 
+  if (operators.includes(input[input.length - 1])) {
+    return 'Error: operation cannot end with an operator'
+  }
+
   let unresolvedParentheses = 0;
-  let parsedNumbers = [];
 
   const recursiveFormat = (string, operation = '') => {
     let firstChar = string[0];
     let nextChar = string[1];
     let lastChar = operation[operation.length - 1];
+    let charBeforeLast = operation[operation.length - 2];
 
     // BASE CASE
     if (string.length === 0) {
@@ -47,9 +52,6 @@ const format = (input) => {
         return 'Error: decimal point needs a number on either side';
       }
 
-      // save parsed number for later
-      parsedNumbers.push(numberStr);
-
       // recursive call for numbers (incl. floats)
       return recursiveFormat(string.slice(numberStr.length), operation + numberStr);
     }
@@ -70,12 +72,14 @@ const format = (input) => {
         }
       }
       if (firstChar === '-') {
-        if (operators.includes(lastChar) && operators.includes(nextChar)) {
+        if (
+          (operators.includes(lastChar) && operators.includes(nextChar)) ||
+          (nextChar === '-' && lastChar === undefined)
+          ) {
           return 'Error: too many operators in a row';
-        }
-        if (lastChar === '-') {
-          operation = operation.slice(0, lastChar);
+        } else if (nextChar === '-') {
           operation += '+';
+          string = string.slice(1);
         } else {
           operation += '-';
         }
@@ -126,8 +130,13 @@ const format = (input) => {
 
   // otherwise return result operation
   } else {
-    return [formattedOperation, parsedNumbers];
+    return formattedOperation;
   }
 };
 
-console.log(format('00'))
+// console.log(format('(4-2)3.5'))
+// console.log(format(('1-2-3-4')))
+
+
+
+module.exports.format = format;

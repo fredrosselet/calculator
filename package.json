@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "nodemon server/index.js",
-    "build": "webpack --config webpack.config.js --mode=development --watch",
+    "build": "webpack --config webpack.config.js --mode=development --devtool=source-map --watch",
     "prod": "webpack --config webpack.config.js --mode=production"
   },
   "repository": {
@@ -25,9 +25,11 @@
     "babel-loader": "^8.2.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "jest": "^27.2.4",
     "nodemon": "^2.0.13",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "sinful-math": "^0.0.1",
     "webpack": "^5.56.0"
   },
   "devDependencies": {
