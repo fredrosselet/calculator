@@ -9,26 +9,27 @@ const format = (input) => {
   const operators = ['+', '-', '*', '/'];
 
   let unresolvedParentheses = 0;
+  let parsedNumbers = [];
 
-  const recursiveParse = (string, operation = '') => {
+  const recursiveFormat = (string, operation = '') => {
     let firstChar = string[0];
     let nextChar = string[1];
     let lastChar = operation[operation.length - 1];
 
-    // base case
+    // BASE CASE
     if (string.length === 0) {
       return operation;
     }
 
     // only accept calcChars
     if (!calcChars.includes(firstChar)) {
-      return 'Error: invalid input';
+      return 'Error: invalid character';
     }
 
-    // NUMBERS OR DECIMAL POINT
+    // --- NUMBERS (including decimal point) ---
     if (!isNaN(firstChar) || firstChar === '.') {
       let numberStr = '';
-      let decimalPointCounted = false;
+      let decimalPointCounted = false; // only allow one decimal point per number
       let i = 0;
       while (i < string.length && (!isNaN(string[i]) || string[i] === '.')) {
         if (string[i] === '.') {
@@ -42,19 +43,26 @@ const format = (input) => {
         i++;
       }
 
-      if (numberStr === '.') {
+      if (numberStr === '.') { // if the number only consists of a decimal point
         return 'Error: decimal point needs a number on either side';
       }
 
+      // save parsed number for later
+      parsedNumbers.push(numberStr);
+
       // recursive call for numbers (incl. floats)
-      return recursiveParse(string.slice(numberStr.length), operation + numberStr);
+      return recursiveFormat(string.slice(numberStr.length), operation + numberStr);
     }
 
 
-    // NOT A NUMBER
+    // --- NON NUMBER ---
     else {
+
       // OPERATORS
       if (firstChar === '+' || firstChar === '*' || firstChar === '/') {
+        if (lastChar === '(') {
+          return 'Error: opening parenthesis followed by an operator';
+        }
         if (operators.includes(lastChar)) {
           return 'Error: too many operators in a row';
         } else {
@@ -77,16 +85,18 @@ const format = (input) => {
       if (firstChar === '(') {
         if (nextChar === ')') {
           return 'Error: empty parenthesis';
-        } else {
-          unresolvedParentheses++;
-          // add * in front of ( if previous character is a number
-          if (!isNaN(lastChar)) {
-            operation += '*';
-          }
-          operation += '(';
         }
+        unresolvedParentheses++;
+        // add * in front of ( if previous character is a number or .
+        if (!isNaN(lastChar) || lastChar === '.') {
+          operation += '*';
+        }
+        operation += '(';
       }
       if (firstChar === ')') {
+        if (operators.includes(lastChar)) {
+          return 'Error: operator followed by closing parenthesis';
+        }
         if (unresolvedParentheses > 0) {
           unresolvedParentheses--;
           operation += ')';
@@ -100,15 +110,15 @@ const format = (input) => {
       }
 
       // recursive call for non-numbers
-      return recursiveParse(string.slice(1), operation);
+      return recursiveFormat(string.slice(1), operation);
     }
   };
 
-  const result = recursiveParse(input);
+  const formattedOperation = recursiveFormat(input);
 
   // unless we already have an error
-  if (result[0] === 'E') {
-    return result;
+  if (formattedOperation[0] === 'E') {
+    return formattedOperation;
 
   // check if parentheses there are leftover opening parentheses
   } else if (unresolvedParentheses > 0) {
@@ -116,6 +126,8 @@ const format = (input) => {
 
   // otherwise return result operation
   } else {
-    return result;
+    return [formattedOperation, parsedNumbers];
   }
 };
+
+console.log(format('00'))
