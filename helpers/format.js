@@ -13,13 +13,12 @@ const format = (input) => {
     return 'Error: operation cannot end with an operator'
   }
 
-  let unresolvedParentheses = 0;
+  let unresolvedParentheses = 0; // keep track of how many parentheses are open. This should be 0 by the end of the formatting (l. 127)
 
   const recursiveFormat = (string, operation = '') => {
     let firstChar = string[0];
     let nextChar = string[1];
     let lastChar = operation[operation.length - 1];
-    let charBeforeLast = operation[operation.length - 2];
 
     // BASE CASE
     if (string.length === 0) {
@@ -48,7 +47,7 @@ const format = (input) => {
         i++;
       }
 
-      if (numberStr === '.') { // if the number only consists of a decimal point
+      if (numberStr === '.') { // if the number only consists of a decimal point (there needs to be at least a number before or after)
         return 'Error: decimal point needs a number on either side';
       }
 
@@ -77,7 +76,7 @@ const format = (input) => {
           (nextChar === '-' && lastChar === undefined)
           ) {
           return 'Error: too many operators in a row';
-        } else if (nextChar === '-') {
+        } else if (nextChar === '-') { // -- => +
           operation += '+';
           string = string.slice(1);
         } else {
@@ -118,9 +117,11 @@ const format = (input) => {
     }
   };
 
+  // start the recursive function
   const formattedOperation = recursiveFormat(input);
 
-  // unless we already have an error
+  // lastly...
+  // return if error
   if (formattedOperation[0] === 'E') {
     return formattedOperation;
 
@@ -133,10 +134,5 @@ const format = (input) => {
     return formattedOperation;
   }
 };
-
-// console.log(format('(4-2)3.5'))
-// console.log(format(('1-2-3-4')))
-
-
 
 module.exports.format = format;

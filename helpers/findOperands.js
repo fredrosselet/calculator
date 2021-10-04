@@ -1,6 +1,7 @@
-module.exports.findOperands = (string1, string2) => { // find operands before and after operator
+module.exports.findOperands = (string1, string2) => { // find operands on each side of an operator (as well as index of single operation)
   const operators = ['*', '/', '+', '-'];
 
+  // OPERAND 1
   // iterate backwards over string1
   let i = string1.length - 1;
   while (i >= 0 &&
@@ -11,9 +12,10 @@ module.exports.findOperands = (string1, string2) => { // find operands before an
   ){
     i--;
   }
-  let operationIndex = i + 1;
+  let operationIndex = i + 1; // save index of where the first operand starts
   let operand1 = string1.slice(operationIndex);
 
+  // OPERAND 2
   // iterate forwards over string2
   let j = (string2[0] === '-') ? 1 : 0; // skip first character if second operand is negative
   while (j < string2.length &&
