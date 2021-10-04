@@ -25,7 +25,7 @@ describe('basic operations', () => {
     expect(calculate('1-2')).toBe(-1);
     expect(calculate('2-2')).toBe(0);
     expect(calculate('0.1-0.2')).toBe(-0.1);
-    // expect(calculate('1-2-3-4')).toBe(-8);
+    expect(calculate('1-2-3-4')).toBe(-8);
   });
   it ('solves basic multiplications', () => {
     expect(calculate('1*0')).toBe(0);
@@ -38,7 +38,7 @@ describe('basic operations', () => {
     expect(calculate('1/2')).toBe(0.5);
     expect(calculate('2/2')).toBe(1);
     expect(calculate('0.1/0.2')).toBe(0.5);
-    expect(calculate('1/2/3/4')).toBe(0.041666667);
+    expect(calculate('1/2/3/4')).toBe(0.0416666667);
   });
 });
 
