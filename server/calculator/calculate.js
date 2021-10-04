@@ -1,5 +1,5 @@
-const format = require('./helpers/format.js').format;
-const operate = require('./helpers/operate.js').operate;
+const format = require('./format.js').format;
+const operate = require('./operate.js').operate;
 
 export const calculate = (input) => {
   const formatted = format(input);

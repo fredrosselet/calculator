@@ -1,3 +1,4 @@
+// format string before solving operation
 const format = (input) => {
   if (!input) {
     return '0';

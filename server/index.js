@@ -7,4 +7,8 @@ app.use(cors());
 
 app.use(express.static('./public'));
 
+app.get('/calculator', (req, res) => {
+
+});
+
 app.listen(port, () => console.log(`server listening at http://localhost:${port}`));
