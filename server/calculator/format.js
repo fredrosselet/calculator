@@ -65,8 +65,12 @@ const format = (input) => {
         if (lastChar === '(') {
           return 'Error: opening parenthesis followed by an operator';
         }
+
         if (operators.includes(lastChar)) {
           return 'Error: too many operators in a row';
+        } else if (firstChar === '+' && nextChar === '-') { // +- => -
+          operation += '-';
+          string = string.slice(1);
         } else {
           operation += firstChar;
         }
