@@ -26,6 +26,5 @@ module.exports.findOperands = (string1, string2) => {
     j++;
   }
   let operand2 = string2.slice(0, j);
-
   return [operand1, operand2, operationIndex];
 };
