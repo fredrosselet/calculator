@@ -47,6 +47,8 @@ const operate = (operation, ops = ['/', '*', '+', '-']) => { // '-1-3-4'
   let [str1, str2, str1Index] = findOperands(before, after);
   let num1 = Number(str1);
   let num2 = Number(str2);
+
+
   if (op === '/' && num2 === 0) {
     return 'Error: cannot divide by 0';
   }
@@ -63,5 +65,7 @@ const operate = (operation, ops = ['/', '*', '+', '-']) => { // '-1-3-4'
   }
   return operate(operation, ops);
 };
+
+console.log(operate('1+1-2+9'));
 
 module.exports.operate = operate;

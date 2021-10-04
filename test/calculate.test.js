@@ -1,4 +1,4 @@
-import { calculate } from '../server/calculator/calculate.js';
+const calculate = require('../server/calculator/calculate.js').calculate;
 
 describe('example operations', () => {
   const operations = ['1 + 2', '4*5/2', '-5+-8--11*2', '-.32       /.5', '(4-2)*3.5'];
