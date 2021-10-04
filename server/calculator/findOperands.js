@@ -1,4 +1,5 @@
-module.exports.findOperands = (string1, string2) => { // find operands on each side of an operator (as well as index of single operation)
+// find operands on each side of an operator (as well as index of single operation)
+module.exports.findOperands = (string1, string2) => {
   const operators = ['*', '/', '+', '-'];
 
   // OPERAND 1

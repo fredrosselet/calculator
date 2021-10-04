@@ -1,10 +1,11 @@
+// format string before solving operation
 const format = (input) => {
   if (!input) {
     return '0';
   }
 
   // initial formatting
-  input = input.replaceAll(' ', '').replaceAll('x', '*').replaceAll('÷', '/');
+  input = input.replaceAll(' ', '').replaceAll('×', '*').replaceAll('÷', '/');
 
   const calcChars = ['(', ')', '.', '+', '-', '*', '/', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
   const operators = ['+', '-', '*', '/'];

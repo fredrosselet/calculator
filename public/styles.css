@@ -1,8 +1,17 @@
 body {
-  background-color: black;
+  background-image: linear-gradient(to right, #8d8d8d, #ffffff, #8d8d8d)
+}
+
+.calculator {
   color: white;
+  background-color: black;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 80px;
+  font-weight: 100;
+  margin: 40px auto;
+  padding: 5px;
+  border-radius: 38px;
+  width: 320px;
+  text-align: right;
 }
 
 button {
@@ -10,14 +19,31 @@ button {
   width: 72px;
   border: none;
   border-radius: 50%;
-  font-size: 32px;
+  font-size: 30px;
   cursor: pointer;
+  transition: filter 1s;
 }
 
-.calculator {
-  margin: auto;
-  width: 320px;
-  text-align: right;
+button:active {
+  filter: brightness(130%) saturate(40%);
+  transition: 0s;
+}
+
+.result, .operation {
+  width: 288px;
+  margin: 0 16px;
+  overflow-x: auto;
+}
+
+.result {
+  font-size: 80px;
+}
+
+.operation {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 32px;
+  margin-bottom: 5px;
 }
 
 .buttonPad {
@@ -26,28 +52,19 @@ button {
   grid-gap: 8px;
 }
 
-.AC,
-.\28, /* ( */
-.\29 /* ) */
-{
+.AC, .\28, .\29 { /* ( , ) */
   color: #000000;
-  background-color: #efefef;
+  background-color: #8d8d8d;
 }
 
-.÷,
-.x,
-.\2D, /* - */
-.\2B, /* + */
-.\3D /* = */
-{
+.÷, .×, .\2D, .\2B, .\3D { /* - , + , = */
   color: #ffffff;
   background-color: orange;
 }
 
-.\31, .\32, .\33, .\34, .\35, .\36, .\37, .\38, .\39, .\30, .\2E /* 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, . */
-{
+.\31, .\32, .\33, .\34, .\35, .\36, .\37, .\38, .\39, .\30, .\2E { /* 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, . */
   color: #ffffff;
-  background-color: rgb(65, 65, 65);
+  background-color: rgb(40, 40, 40);
 }
 
 .\30 { /* 0 */
