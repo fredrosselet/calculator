@@ -11,7 +11,7 @@ const format = (input) => {
   const operators = ['+', '-', '*', '/'];
 
   if (operators.includes(input[input.length - 1])) {
-    return 'Error: operation cannot end with an operator'
+    return 'Error: operation cannot end with an operator';
   }
 
   let unresolvedParentheses = 0; // keep track of how many parentheses are open. This should be 0 by the end of the formatting (l. 127)
