@@ -4,17 +4,18 @@ const format = (input) => {
     return '0';
   }
 
-  // initial formatting
-  input = input.replaceAll(' ', '').replaceAll('×', '*').replaceAll('÷', '/');
+  input = input.trim();
 
   const calcChars = ['(', ')', '.', '+', '-', '*', '/', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-  const operators = ['+', '-', '*', '/'];
+  const operators = ['+', '-', '*', '/', '×', '÷'];
 
+  // check if input ends with an operator
   if (operators.includes(input[input.length - 1])) {
     return 'Error: operation cannot end with an operator';
   }
 
-  let unresolvedParentheses = 0; // keep track of how many parentheses are open. This should be 0 by the end of the formatting (l. 127)
+  // keep track of open parentheses (this should be 0 by the end of the formatting)
+  let unresolvedParentheses = 0;
 
   const recursiveFormat = (string, operation = '') => {
     let firstChar = string[0];
@@ -26,12 +27,23 @@ const format = (input) => {
       return operation;
     }
 
-    // only accept calcChars
+    // INITIAL FORMATTING (spaces, '×' and '÷', invalid characters)
+    if (firstChar === ' ') {
+      return recursiveFormat(string.slice(1), operation);
+    }
+    if (firstChar === '×') {
+      operation += '*';
+      return recursiveFormat(string.slice(1), operation);
+    }
+    if (firstChar === '÷') {
+      operation += '/';
+      return recursiveFormat(string.slice(1), operation);
+    }
     if (!calcChars.includes(firstChar)) {
       return 'Error: invalid character';
     }
 
-    // --- NUMBERS (including decimal point) ---
+    // NUMBERS (including decimal point)
     if (!isNaN(firstChar) || firstChar === '.') {
       let numberStr = '';
       let decimalPointCounted = false; // only allow one decimal point per number
@@ -47,8 +59,7 @@ const format = (input) => {
         numberStr += string[i];
         i++;
       }
-
-      if (numberStr === '.') { // if the number only consists of a decimal point (there needs to be at least a number before or after)
+      if (numberStr === '.') { // unaccompanied decimal point (there needs to be at least a number before or after)
         return 'Error: decimal point needs a number on either side';
       }
 
@@ -57,7 +68,7 @@ const format = (input) => {
     }
 
 
-    // --- NON NUMBER ---
+    // NON NUMBERS
     else {
 
       // OPERATORS
@@ -65,10 +76,9 @@ const format = (input) => {
         if (lastChar === '(') {
           return 'Error: opening parenthesis followed by an operator';
         }
-
         if (operators.includes(lastChar)) {
           return 'Error: too many operators in a row';
-        } else if (firstChar === '+' && nextChar === '-') { // +- => -
+        } else if (firstChar === '+' && nextChar === '-') { // '+-' => '-'
           operation += '-';
           string = string.slice(1);
         } else {
@@ -81,7 +91,7 @@ const format = (input) => {
           (nextChar === '-' && lastChar === undefined)
           ) {
           return 'Error: too many operators in a row';
-        } else if (nextChar === '-') { // -- => +
+        } else if (nextChar === '-') { // '--' => '+'
           operation += '+';
           string = string.slice(1);
         } else {
@@ -95,7 +105,7 @@ const format = (input) => {
           return 'Error: empty parenthesis';
         }
         unresolvedParentheses++;
-        // add * in front of ( if previous character is a number or .
+        // add '*' in front of '(' if previous character is a number or '.'
         if (!isNaN(lastChar) || lastChar === '.') {
           operation += '*';
         }
@@ -108,7 +118,7 @@ const format = (input) => {
         if (unresolvedParentheses > 0) {
           unresolvedParentheses--;
           operation += ')';
-          // add * after ) if next character is a number or .
+          // add '*' after ')' if next character is a number or '.'
           if (!isNaN(nextChar) || nextChar === '.') {
             operation += '*';
           }
@@ -122,10 +132,10 @@ const format = (input) => {
     }
   };
 
-  // start the recursive function
+  // initiate the recursive function
   const formattedOperation = recursiveFormat(input);
 
-  // lastly...
+  // LAST CHECKS
   // return if error
   if (formattedOperation[0] === 'E') {
     return formattedOperation;
