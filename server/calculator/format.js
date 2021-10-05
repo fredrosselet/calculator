@@ -113,7 +113,7 @@ const format = (input) => {
             operation += '*';
           }
         } else {
-          return 'Error: too many closing parentheses';
+          return 'Error: parentheses are not balanced';
         }
       }
 
@@ -132,7 +132,7 @@ const format = (input) => {
 
   // check if parentheses there are leftover opening parentheses
   } else if (unresolvedParentheses > 0) {
-    return 'Error: too many opening parentheses';
+    return 'Error: parentheses are not balanced';
 
   // otherwise return result operation
   } else {
