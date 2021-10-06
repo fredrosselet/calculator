@@ -17,7 +17,7 @@
 - All Clear button ('AC') clears both result and operation fields, Clear button ('C', once an operation is entered) clears only the operation field.
 
 ### API
- <code>/calculator</code> route handles GET (query parameters) and POST (JSON data) requests.
+ <code>/calculator</code> endpoint handles GET (query parameters) and POST (JSON data) requests.
 
 ## Requirements
 - Node ^6.13.0
