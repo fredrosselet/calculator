@@ -5,8 +5,11 @@ bundle.js.map
 # Packages
 package-lock.json
 
-# Test coverage
-coverage
+# Key pairs
+calculator.pem
+
+# Logins
+login.sh
 
 # Logs
 logs

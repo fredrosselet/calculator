@@ -1,4 +1,5 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './client/index.jsx',
@@ -6,9 +7,16 @@ module.exports = {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js'
   },
+  
   module: {
     rules: [{
-      loader: 'babel-loader'
+      loader: 'babel-loader',
+      test: /\.(js.|jsx)$/,
+      exclude: /node_modules/
     }]
-  }
+  },
+
+  plugins: [
+    new Dotenv()
+  ]
 };
