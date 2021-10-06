@@ -36,11 +36,11 @@ describe ('basic operations', () => {
   });
   it ('solves basic multiplications', () => {
     expect(calculate('1*0')).toBe(0);
-    expect(calculate('1*2')).toBe(2);
+    expect(calculate('1×2')).toBe(2);
     expect(calculate('1*2*3*4')).toBe(24);
   });
   it ('solves basic divisions', () => {
-    expect(calculate('4/2')).toBe(2);
+    expect(calculate('4÷2')).toBe(2);
     expect(calculate('2/2')).toBe(1);
     expect(calculate('0.1/0.2')).toBe(0.5);
   });

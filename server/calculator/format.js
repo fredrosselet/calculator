@@ -14,6 +14,11 @@ const format = (input) => {
     return 'Error: operation cannot end with an operator';
   }
 
+  // add 0 if input begins with operator
+  if (operators.includes(input[0])) {
+    input = '0' + input;
+  }
+
   // keep track of open parentheses (this should be 0 by the end of the formatting)
   let unresolvedParentheses = 0;
 
@@ -31,7 +36,7 @@ const format = (input) => {
     if (firstChar === ' ') {
       return recursiveFormat(string.slice(1), operation);
     }
-    if (firstChar === '×') {
+    if (firstChar === '×' || firstChar === 'x') {
       operation += '*';
       return recursiveFormat(string.slice(1), operation);
     }
@@ -139,15 +144,14 @@ const format = (input) => {
   // return if error
   if (formattedOperation[0] === 'E') {
     return formattedOperation;
-
-  // check if parentheses there are leftover opening parentheses
-  } else if (unresolvedParentheses > 0) {
-    return 'Error: parentheses are not balanced';
-
-  // otherwise return result operation
-  } else {
-    return formattedOperation;
   }
+  // check if parentheses there are leftover opening parentheses
+  if (unresolvedParentheses > 0) {
+    return 'Error: parentheses are not balanced';
+  }
+  
+  // otherwise return result operation
+  return formattedOperation;
 };
 
 module.exports.format = format;
