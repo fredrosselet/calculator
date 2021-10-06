@@ -12,7 +12,7 @@
 
 ## Description
 - Supports additions, substractions, multiplications, divisions, and parentheses.
-- An operation can be created from the keyboard or from clicking the buttons (keyboard option disabled on mobile version).
+- An operation can be created from the keyboard or from clicking the buttons (keyboard is available in mobile version by tapping on the operation area).
 - Pressing '=' or Enter submits the operation to be solved, result will appear in the top section.
 - All Clear button ('AC') clears both result and operation fields, Clear button ('C', once an operation is entered) clears only the operation field.
 
