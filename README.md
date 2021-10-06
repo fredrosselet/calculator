@@ -23,13 +23,14 @@
 - Node ^6.13.0
 
 ## Access
-### Deployed version (if currently running):
+### Interface
+- Deployed version (if currently running):
 http://54.215.31.40:3000/
-### Locally installed (instructions below):
+- Local installation (instructions below):
 http://localhost:3000/
 
 ### Through command line:
-1. Node command (by running calculate.js):
+1. Node command (if installed locally and by running calculate.js):
    - Access the <code>calculate()</code> function
    - Invoke function on string operation
    - Example command (from calculator directory):
@@ -39,7 +40,7 @@ node -e 'require("./server/calculator/calculate.js").calculate('1+1')'
 
 2. API call: <code>/calculator</code>
 - POST request (JSON data):
-   - Set Content-Type header set to <code>application/json</code>
+   - Set Content-Type header to <code>application/json</code>
    - Enter operation in JSON format (key="operation"):\
    <code>'{"operation":[string operation]}'</code>
    - Example cURL command:
