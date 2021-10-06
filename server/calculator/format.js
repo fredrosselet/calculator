@@ -150,7 +150,6 @@ const format = (input) => {
   }
 
   // otherwise return result operation
-  console.log('formatted:', formattedOperation)
   return formattedOperation;
 };
 
