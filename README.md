@@ -25,7 +25,7 @@
 ## Access
 ### Deployed version (if currently running):
 http://54.215.31.40:3000/
-### Locally installed (see below for installation):
+### Locally installed (instructions below):
 http://localhost:3000/
 
 ### Through command line:
