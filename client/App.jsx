@@ -28,7 +28,9 @@ const App = () => {
   const textareaRef = useRef();
 
   const focusTextarea = () => { // keeps the textarea focused if clicking anywhere on calculator
-    findDOMNode(textareaRef.current).focus();
+    if (window.screen.availWidth > 425) { // ...only on screens wider than 425px
+      findDOMNode(textareaRef.current).focus();
+    }
   };
 
   return (
