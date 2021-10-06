@@ -1,14 +1,12 @@
-const calculate = require('../server/calculator/calculate.js').calculate;
+const calculate = require('../../server/calculator/calculate.js').calculate;
+const { goodOps, results, badOps} = require('../fixtures/exampleOperations.js').operations;
 
 describe ('example operations', () => {
-  const operations = ['1 + 2', '4*5/2', '-5+-8--11*2', '-.32       /.5', '(4-2)*3.5'];
-  const results = [3, 10, 9, -0.64, 7];
-  const badOperations = ['2+-+-4', '19 + cinnamon'];
   it ('solves example operations', () => {
-    operations.forEach((operation, index) => {
+    goodOps.forEach((operation, index) => {
       expect(calculate(operation)).toBe(results[index]);
     });
-    badOperations.forEach((badOperation) => {
+    badOps.forEach((badOperation) => {
       expect(calculate(badOperation).slice(0, 5)).toBe('Error');
     });
   });

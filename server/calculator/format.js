@@ -1,10 +1,12 @@
 // format string before solving operation
 const format = (input) => {
+
   if (!input) {
     return '0';
   }
 
-  input = input.trim();
+  // type (string/number) may vary depending on the source, and may contain spaces before or after operator
+  input = input.toString().trim();
 
   const calcChars = ['(', ')', '.', '+', '-', '*', '/', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
   const operators = ['+', '-', '*', '/', '×', '÷'];
@@ -32,7 +34,7 @@ const format = (input) => {
       return operation;
     }
 
-    // INITIAL FORMATTING (spaces, '×' and '÷', invalid characters)
+    // INITIAL FORMATTING (spaces, '×'/'x' and '÷', invalid characters)
     if (firstChar === ' ') {
       return recursiveFormat(string.slice(1), operation);
     }
@@ -48,7 +50,7 @@ const format = (input) => {
       return 'Error: invalid character';
     }
 
-    // NUMBERS (including decimal point)
+    // NUMBERS including decimal point
     if (!isNaN(firstChar) || firstChar === '.') {
       let numberStr = '';
       let decimalPointCounted = false; // only allow one decimal point per number
@@ -68,7 +70,7 @@ const format = (input) => {
         return 'Error: decimal point needs a number on either side';
       }
 
-      // recursive call for numbers (incl. floats)
+      // recursive call for numbers
       return recursiveFormat(string.slice(numberStr.length), operation + numberStr);
     }
 
@@ -149,7 +151,7 @@ const format = (input) => {
   if (unresolvedParentheses > 0) {
     return 'Error: parentheses are not balanced';
   }
-  
+
   // otherwise return result operation
   return formattedOperation;
 };

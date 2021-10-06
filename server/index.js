@@ -2,15 +2,22 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const calculate = require('./calculator/calculate.js').calculate;
 
 app.use(cors());
+app.use(bodyParser.json());
 
 app.use(express.static('./public'));
 
 app.get('/calculator', (req, res) => {
-  let operation = (req.query.operation);
+  let operation = req.query.operation;
+  res.json(calculate(operation));
+});
+
+app.post('/calculator', (req, res) => {
+  let operation = req.body.operation;
   res.json(calculate(operation));
 });
 

@@ -4,7 +4,7 @@ import Result from './components/Result.jsx';
 import Inputs from './components/Inputs.jsx';
 import axios from 'axios';
 
-const url = 'localhost';
+const url = 'localhost:3000';
 const port = '3000';
 
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
     } else {
       operation = encodeURIComponent(operation); // escapes all characters except A-Z a-z 0-9 - _ . ! ~ * ' ( )
     }
-    axios.get(`http://${url}:${port}/calculator?operation=${operation}`)
+    axios.get(`http://${url}/calculator?operation=${operation}`)
       .then((response) => setResult(response.data));
   };
 
