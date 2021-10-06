@@ -11,9 +11,6 @@ calculator.pem
 # Logins
 login.sh
 
-# ReadMe assets
-ScreenShot.png
-
 # Logs
 logs
 *.log
