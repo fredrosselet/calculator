@@ -2,6 +2,7 @@ const findOperands = require('./findOperands.js').findOperands;
 const solve = require('./solve.js').solve;
 
 const operate = (operation, ops = [['/', '*'], ['+', '-']]) => {
+  console.log(operation)
 
   // BASE CASE (final number)
   if (!isNaN(operation)) {

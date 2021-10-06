@@ -1,29 +1,65 @@
 # Calculator
 
-Simple calculator application
-
 <img src="ScreenShot.png" width="600">
 
 ## Table of Contents
 1. [Description](#description)
-2. [Technologies](#technologies)
-3. [Requirements](#requirements)
-4. [Installation](#installation)
+2. [Requirements](#requirements)
+3. [Access](#access)
+4. [Technologies](#technologies)
+5. [Installation](#installation)
+
 
 ## Description
+- Supports additions, substractions, multiplications, divisions, and parentheses.
+- An operation can be created from the keyboard or from clicking the buttons (keyboard option disabled on mobile version).
+- Pressing '=' or Enter submits the operation to be solved, result will appear in the top section.
+- All Clear button ('AC') clears both result and operation fields, Clear button ('C', once an operation is entered) clears only the operation field.
 
+### API
+ <code>/calculator</code> route handles GET (query parameters) and POST (JSON data) requests.
 
-## Features
+## Requirements
+- Node ^6.13.0
 
-###
+## Access
+### Deployed version (if currently running):
+http://54.215.31.40:3000/
+### Locally installed (see below for installation):
+http://localhost:3000/
 
-###
+### Through command line:
+1. Node command (by running calculate.js):
+   - Access the <code>calculate()</code> function
+   - Invoke function on string operation
+   - Example command (from calculator directory):
+```sh
+node -e 'require("./server/calculator/calculate.js").calculate('1+1')'
+```
 
-###
+2. API call: <code>/calculator</code>
+- POST request (JSON data):
+   - Set Content-Type header set to <code>application/json</code>
+   - Enter operation in JSON format (key="operation"):\
+   <code>'{"operation":[string operation]}'</code>
+   - Example cURL command:
+```sh
+curl -X POST http://localhost:3000/calculator -H "Content-Type: application/json" -d '{"operation":"1+1"}' -w '\n'
+```
+  ...returns 2
+
+- GET request (query parameter):
+  - Include ?operation query followed by URL encoded string:\
+<code>[base url]/calculator?operation=[URL encoded string]</code>
+  - Example cURL command:
+```sh
+curl -X GET http://localhost:3000/calculator?operation=1%2B1
+```
+  ...returns 2
 
 ## Technologies
-- Axios
 - AWS EC2
+- Axios
 - Babel
 - CSS
 - Express.js
@@ -34,27 +70,24 @@ Simple calculator application
 - React & ReactDOM
 - Webpack
 
-## Requirements
-- Node 6.13.0
-
 ## Installation
-### Installing dependencies
-From within the Calculator directory:
+1. Clone repository
+2. Install dependencies (from within the Calculator directory):
 ```sh
 npm install
 ```
-### Creating the bundle file
-From within the Calculator directory:
+3. Create the bundle file:
 ```sh
 npm run build (development mode)
 npm run prod (production mode)
 ```
-### Starting the server
-From within the Calculator directory:
+4. Start the server:
 ```sh
 npm start
 ```
-### Running tests
+5. Application available at http://localhost:3000
+
+## Test command
 ```sh
 npm test
 ```

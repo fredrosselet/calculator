@@ -5,8 +5,8 @@ const format = (input) => {
     return '0';
   }
 
-  // type (string/number) may vary depending on the source, and may contain spaces before or after operator
-  input = input.toString().trim();
+  // type (string/number) may vary depending on the source, and may contain spaces
+  input = input.toString().replaceAll(' ', '');
 
   const calcChars = ['(', ')', '.', '+', '-', '*', '/', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
   const operators = ['+', '-', '*', '/', '×', '÷'];
@@ -34,10 +34,7 @@ const format = (input) => {
       return operation;
     }
 
-    // INITIAL FORMATTING (spaces, '×'/'x' and '÷', invalid characters)
-    if (firstChar === ' ') {
-      return recursiveFormat(string.slice(1), operation);
-    }
+    // INITIAL FORMATTING ('×'/'x' and '÷', invalid characters)
     if (firstChar === '×' || firstChar === 'x') {
       operation += '*';
       return recursiveFormat(string.slice(1), operation);
@@ -153,6 +150,7 @@ const format = (input) => {
   }
 
   // otherwise return result operation
+  console.log('formatted:', formattedOperation)
   return formattedOperation;
 };
 
