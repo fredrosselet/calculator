@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { findDOMNode } from 'react-dom';
 import Result from './components/Result.jsx';
 import Inputs from './components/Inputs.jsx';
 import axios from 'axios';
@@ -20,14 +21,20 @@ const App = () => {
       .then((response) => setResult(response.data));
   };
 
-  const clear = () => {
+  const clearAll = () => {
     setResult(0);
   }
 
+  const textareaRef = useRef();
+
+  const focusTextarea = () => { // keeps the textarea focused if clicking anywhere on calculator
+    findDOMNode(textareaRef.current).focus();
+  };
+
   return (
-    <div className="calculator">
+    <div className="calculator" onClick={focusTextarea}>
       <Result result={result}/>
-      <Inputs submit={submitOperation} clear={clear}/>
+      <Inputs submit={submitOperation} clearAll={clearAll} textareaRef={textareaRef}/>
     </div>
   );
 };

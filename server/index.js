@@ -11,7 +11,6 @@ app.use(express.static('./public'));
 
 app.get('/calculator', (req, res) => {
   let operation = (req.query.operation);
-  console.log(operation);
   res.json(calculate(operation));
 });
 
