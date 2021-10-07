@@ -40,7 +40,7 @@ npm start
 5. Application available at http://localhost:3000
 
 ### Access from command line
-1. Node command (if installed locally and by running calculate.js):
+1. Node command (by running calculate.js):
    - Access the <code>calculate()</code> function
    - Invoke function on string operation
    - Example command (from calculator directory):
