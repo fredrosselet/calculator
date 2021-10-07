@@ -29,8 +29,6 @@ const App = () => {
   const focusTextarea = () => { // keeps the textarea focused if clicking anywhere on calculator
     if (window.screen.availWidth > 425) { // ...only on screens wider than 425px
       textareaRef.current.focus();
-    } else {
-      screen.orientation.lock("portrait");
     }
   };
 
