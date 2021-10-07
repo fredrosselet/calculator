@@ -29,6 +29,8 @@ npm install
 3. Create the bundle file:
 ```sh
 npm run build (development mode)
+```
+```sh
 npm run prod (production mode)
 ```
 4. Start the server:
