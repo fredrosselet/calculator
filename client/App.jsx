@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-import { findDOMNode } from 'react-dom';
 import Result from './components/Result.jsx';
 import Inputs from './components/Inputs.jsx';
 import axios from 'axios';
@@ -29,7 +28,7 @@ const App = () => {
 
   const focusTextarea = () => { // keeps the textarea focused if clicking anywhere on calculator
     if (window.screen.availWidth > 425) { // ...only on screens wider than 425px
-      findDOMNode(textareaRef.current).focus();
+      textareaRef.current.focus();
     }
   };
 

@@ -21,9 +21,11 @@ const Inputs = (props)  => {
     }
   }
 
+
+
   return (
     <div className="inputs" onKeyDown={handleKeyPress}>
-      <textarea className="operation" ref={props.textareaRef} autoFocus value={operation} onChange={handleChange}></textarea>
+      <textarea className="operation" autoFocus ref={props.textareaRef} value={operation} onChange={handleChange}></textarea>
       <div className="buttonPad">
         <button className="AC" onClick={operation ? () => setOperation('') : () => props.clearAll()}>{operation ? 'C' : 'AC'}</button>
         {characters.map((character, index) =>
