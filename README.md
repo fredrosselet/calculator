@@ -22,14 +22,7 @@
 ## Requirements
 - Node ^6.13.0
 
-## Access
-### Interface
-- Deployed version (if currently running):
-http://54.215.31.40:3000/
-- Local installation (instructions below):
-http://localhost:3000/
-
-### Through command line:
+## Access from command line:
 1. Node command (if installed locally and by running calculate.js):
    - Access the <code>calculate()</code> function
    - Invoke function on string operation
