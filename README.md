@@ -5,10 +5,8 @@
 ## Table of Contents
 1. [Description](#description)
 2. [Requirements](#requirements)
-3. [Access](#access)
+3. [Installation](#installation)
 4. [Technologies](#technologies)
-5. [Installation](#installation)
-
 
 ## Description
 - Supports additions, substractions, multiplications, divisions, and parentheses.
@@ -22,7 +20,24 @@
 ## Requirements
 - Node ^6.13.0
 
-## Access from command line:
+## Installation
+1. Clone repository
+2. Install dependencies (from within the Calculator directory):
+```sh
+npm install
+```
+3. Create the bundle file:
+```sh
+npm run build (development mode)
+npm run prod (production mode)
+```
+4. Start the server:
+```sh
+npm start
+```
+5. Application available at http://localhost:3000
+
+### Access from command line
 1. Node command (if installed locally and by running calculate.js):
    - Access the <code>calculate()</code> function
    - Invoke function on string operation
@@ -51,6 +66,11 @@ curl -X GET http://localhost:3000/calculator?operation=1%2B1
 ```
   ...returns 2
 
+### Test command
+```sh
+npm test
+```
+
 ## Technologies
 - AWS EC2
 - Axios
@@ -63,26 +83,3 @@ curl -X GET http://localhost:3000/calculator?operation=1%2B1
 - sinful-math
 - React & ReactDOM
 - Webpack
-
-## Installation
-1. Clone repository
-2. Install dependencies (from within the Calculator directory):
-```sh
-npm install
-```
-3. Create the bundle file:
-```sh
-npm run build (development mode)
-npm run prod (production mode)
-```
-4. Start the server:
-```sh
-npm start
-```
-5. Application available at http://localhost:3000
-
-## Test command
-```sh
-npm test
-```
-
