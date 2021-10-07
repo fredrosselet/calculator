@@ -35,7 +35,7 @@ const App = () => {
   return (
     <div className="calculator" onClick={focusTextarea}>
       <Result result={result}/>
-      <Inputs submit={submitOperation} clearAll={clearAll} textareaRef={textareaRef}/>
+      <Inputs submit={submitOperation} clearAll={clearAll} textareaRef={textareaRef} focusTextarea={focusTextarea}/>
     </div>
   );
 };

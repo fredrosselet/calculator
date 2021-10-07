@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { findDOMNode } from 'react-dom';
 
 const Inputs = (props)  => {
@@ -21,11 +21,11 @@ const Inputs = (props)  => {
     }
   }
 
-
+  useEffect(() => props.focusTextarea());
 
   return (
     <div className="inputs" onKeyDown={handleKeyPress}>
-      <textarea className="operation" autoFocus ref={props.textareaRef} value={operation} onChange={handleChange}></textarea>
+      <textarea className="operation" ref={props.textareaRef} value={operation} onChange={handleChange}></textarea>
       <div className="buttonPad">
         <button className="AC" onClick={operation ? () => setOperation('') : () => props.clearAll()}>{operation ? 'C' : 'AC'}</button>
         {characters.map((character, index) =>
