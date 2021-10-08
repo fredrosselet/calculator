@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { findDOMNode } from 'react-dom';
 
 const Inputs = (props)  => {
   const characters = ['(', ')', '/', '7', '8', '9', '*', '4', '5', '6', '-', '1', '2', '3', '+', '0'];
