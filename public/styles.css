@@ -30,11 +30,17 @@ button {
   font-size: 30px;
   cursor: pointer;
   transition: filter 1s;
+  -webkit-transition: filter 1s;
+  -moz-transition: filter 1s;
+  -o-transition: filter 1s;
 }
 
 button:active {
   filter: brightness(130%) saturate(40%);
-  transition: 0s;
+  transition-duration: 0s;
+  -webkit-transition-duration: 0s;
+  -moz-transition-duration: 0s;
+  -o-transition-duration: 0s;
 }
 
 .result, .operation {
