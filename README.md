@@ -2,6 +2,8 @@
 
 <img src="ScreenShot.png" width="600">
 
+Deployed application (if available): http://54.215.31.40:3000/
+
 ## Table of Contents
 1. [Description](#description)
 2. [Requirements](#requirements)
