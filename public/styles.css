@@ -21,7 +21,6 @@ body {
   padding: 5px;
   border-radius: 38px;
   width: 320px;
-  height: 536px;
   text-align: right;
 }
 
@@ -48,16 +47,21 @@ button:active {
 }
 
 .result, .operation {
-  margin: 0 16px;
-  font-size: 32px;
-  overflow-x: auto;
+  margin: 4px 16px;
+  height: 36px;
+  overflow: auto;
+  white-space: nowrap;
 }
 
 .result {
   margin-top: 10px;
+  font-size: 36px;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .operation {
+  font-size: 24px;
   width: 90%;
   text-align: right;
   border: none;
@@ -107,20 +111,14 @@ button:active {
   * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     background-image: none;
     background-color: black;
   }
 
   .calculator {
     width: 100vw;
-    height: 100vh;
     border-radius: 0;
     margin: 0;
-  }
-
-  .result, .operation {
-    font-size: 120px;
   }
 
   .result {
@@ -130,23 +128,15 @@ button:active {
   .operation {
     width: 90vw;
     height: 10vh;
-    caret-color: transparent;
   }
 
   button {
-    width: 180px;
-    height: 180px;
-    font-size: 80px;
-  }
-
-  .\2F, .\2A, .\2D, .\2B, .\3D { /* /, *, - , + , = */
-    font-size: 86px;
+    width: 20vw;
+    height: 20vw;
   }
 
   .\30 { /* 0 */
-    width: 440px;
-    border-radius: 100px;
-    padding: 0 80px;
+    width: 45vw;
+    padding: 0 8vw;
   }
-
 }

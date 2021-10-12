@@ -86,13 +86,13 @@ describe ('large numbers', () => {
   it ('handles numbers up to fifteen digits', () => {
     expect(calculate('999999999999999')).toBe(999999999999999);
   });
-  it ('rounds up numbers with 16-20 digits', () => {
+  it ('rounds up numbers with 16-20 digits', () => { // next fix
     expect(calculate('99999999999999999')).toBe(100000000000000000);
   });
   it ('translates numbers with at least 21 digits to exponents', () => {
     expect(calculate('999999999999999999999')).toBe(1e21);
   });
-  it ('registers huge numbers as infinity', () => {
+  it ('registers huge numbers as infinity', () => { // fix after next
     expect(calculate('9*9*9*9*9*9*9*9*9*9*9*9*9*9*9*9*9*9*9*9*9*9*9*9*9*9*9*9')).toBe(Infinity);
   });
 });
