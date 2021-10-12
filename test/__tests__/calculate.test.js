@@ -143,4 +143,8 @@ describe ('errors', () => {
     expect(calculate('1/0')).toBe(error);
     expect(calculate('1/(1-1)')).toBe(error);
   });
+  it ('returns an error if the result of a parenthesis is an error', () =>  {
+    expect(calculate('(1/0)')).toBe(error);
+    expect(calculate('(9/(9-9))')).toBe(error);
+  });
 });

@@ -21,7 +21,7 @@ const format = (input) => {
     input = '0' + input;
   }
 
-  // keep track of open parentheses (this should be 0 by the end of the formatting)
+  // keep a stack of open parentheses (should be 0 by the end of the formatting)
   let unresolvedParentheses = 0;
 
   const recursiveFormat = (string, operation = '') => {
@@ -34,12 +34,12 @@ const format = (input) => {
       return operation;
     }
 
-    // INITIAL FORMATTING ('×'/'x' and '÷', invalid characters)
+    // INITIAL FORMATTING ('×'/'x' to '*', '÷/:' to '/', invalid characters)
     if (firstChar === '×' || firstChar === 'x') {
       operation += '*';
       return recursiveFormat(string.slice(1), operation);
     }
-    if (firstChar === '÷') {
+    if (firstChar === '÷' || firstChar === ':') {
       operation += '/';
       return recursiveFormat(string.slice(1), operation);
     }

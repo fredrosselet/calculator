@@ -28,6 +28,12 @@ const operate = (operation, ops = [['/', '*'], ['+', '-']]) => {
 
     // solve inside of parenthesis
     let innerResult = operate(insideParenthesis, ops).toString();
+
+    // exit function if inner operation results in an error (e. g. '(1/0)')
+    if (innerResult[0] === 'E') {
+      return innerResult;
+    }
+
     // remove parenthesis and insert inner result
     operation = operation.slice(0, openingParIndex) + innerResult + operation.slice(closingParIndex + 1);
     // resume operation
@@ -37,6 +43,7 @@ const operate = (operation, ops = [['/', '*'], ['+', '-']]) => {
   // find next operation to solve
   let j, op, opIndex;
   let precedence = ops[0]; // ('/' & '*') or ('+' & '-')
+
   // if either of the first pair of operators is found (first number may be negative negative => start at index 1)
   for (j = 1; j < operation.length; j++) {
     if (precedence.includes(operation[j])) {
@@ -46,7 +53,7 @@ const operate = (operation, ops = [['/', '*'], ['+', '-']]) => {
     }
   }
 
-  // if neithe '/' or '*' is found in operation, start over with the next order of precedence ('+' and '-')
+  // if neither '/' nor '*' was found in operation, start over with the next order of precedence ('+' and '-')
   if (j === operation.length) {
     ops.shift();
     return operate(operation, ops);
@@ -58,6 +65,8 @@ const operate = (operation, ops = [['/', '*'], ['+', '-']]) => {
   let [str1, str2, str1Index] = findOperands(before, after);
   let num1 = Number(str1);
   let num2 = Number(str2);
+
+  // catch impossible divisions
   if (op === '/' && num2 === 0) {
     return 'Error: cannot divide by 0';
   }
