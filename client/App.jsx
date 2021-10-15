@@ -22,7 +22,7 @@ const App = () => {
 
   const clearAll = () => {
     setResult(0);
-  }
+  };
 
   const textareaRef = useRef();
 

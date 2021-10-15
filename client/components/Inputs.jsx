@@ -7,7 +7,7 @@ const Inputs = (props)  => {
 
   const handleChange = (e) => {
     setOperation(e.target.value);
-  }
+  };
 
   const handleKeyPress = (e) => {
     const moreKeys = ['.', 'Backspace', 'Delete', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight']; // allow typing of backspace and arrows keys
@@ -18,7 +18,7 @@ const Inputs = (props)  => {
         props.submit(operation);
       }
     }
-  }
+  };
 
   useEffect(() => props.focusTextarea());
 

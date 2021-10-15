@@ -9,6 +9,6 @@ const calculate = (input) => {
   const result = operate(formatted);
   console.log(result); // if using the command line
   return result;
-}
+};
 
 module.exports.calculate = calculate;
